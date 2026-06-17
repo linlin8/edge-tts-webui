@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100;
+  }
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg
+      bg-blue-600 text-white font-medium text-sm
+      hover:bg-blue-700 active:bg-blue-800
+      disabled:opacity-50 disabled:cursor-not-allowed
+      dark:bg-blue-500 dark:hover:bg-blue-400
+      transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg
+      bg-gray-100 text-gray-700 font-medium text-sm
+      hover:bg-gray-200 active:bg-gray-300
+      disabled:opacity-50 disabled:cursor-not-allowed
+      dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600
+      transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg
+      bg-red-500 text-white font-medium text-sm
+      hover:bg-red-600 active:bg-red-700
+      disabled:opacity-50 disabled:cursor-not-allowed
+      transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md
+      text-gray-500 text-sm
+      hover:bg-gray-100 hover:text-gray-700
+      dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200
+      transition-all duration-150 focus:outline-none;
+  }
+  .input-base {
+    @apply w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 text-sm
+      placeholder-gray-400
+      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+      dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-500
+      dark:focus:ring-blue-400;
+  }
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700;
+  }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* highlight.js github-dark 主题覆盖 */
+.hljs {
+  @apply bg-gray-900 text-gray-100 rounded-lg p-4 text-sm leading-relaxed overflow-x-auto;
+}
+
+/* Markdown内容样式 */
+.prose-chat {
+  @apply text-sm leading-relaxed;
+}
+.prose-chat p {
+  @apply mb-2 last:mb-0;
+}
+.prose-chat pre {
+  @apply my-3;
+}
+.prose-chat code:not(pre code) {
+  @apply bg-gray-100 dark:bg-gray-700 text-red-500 dark:text-red-400 px-1.5 py-0.5 rounded text-xs font-mono;
+}
+.prose-chat ul, .prose-chat ol {
+  @apply pl-5 mb-2 space-y-1;
+}
+.prose-chat ul { @apply list-disc; }
+.prose-chat ol { @apply list-decimal; }
+.prose-chat h1, .prose-chat h2, .prose-chat h3 {
+  @apply font-semibold mb-1 mt-3;
+}
+.prose-chat blockquote {
+  @apply border-l-4 border-blue-400 pl-3 text-gray-600 dark:text-gray-400 italic my-2;
+}

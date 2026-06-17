@@ -1,0 +1,41 @@
+# ===== Python =====
+# 敏感配置（绝对不能上传）
+backend/.env
+
+# 本地数据
+backend/history.db
+backend/audio_cache/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# ===== Node =====
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ===== 系统 =====
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+
+# ===== 编辑器 =====
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ===== 日志 =====
+*.log
