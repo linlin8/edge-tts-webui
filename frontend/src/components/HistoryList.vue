@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full">
+  <div ref="el" class="flex flex-col h-full">
     <!-- 工具栏 -->
     <div class="flex items-center gap-2 mb-3 flex-shrink-0 flex-wrap">
       <!-- 搜索 -->
@@ -172,7 +172,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useHistory } from '../composables/useHistory.js'
 import AudioPlayer from './AudioPlayer.vue'
@@ -191,7 +191,7 @@ const showDeleteBatch = ref(false)
 const showDeleteAll = ref(false)
 const deleteTargetId = ref(null)
 
-const { historyData, isLoading, deleteMutation, deleteAllMutation, batchDeleteMutation } = useHistory({
+const { historyData, isLoading, refetch, deleteMutation, deleteAllMutation, batchDeleteMutation } = useHistory({
   page, pageSize: ref(20), search: searchKeyword, orderBy, orderDir,
 })
 
@@ -202,6 +202,23 @@ const allSelected = computed(() =>
 )
 
 watch(page, () => { selected.value.clear() })
+
+// 切换到当前 Tab 时自动刷新
+const el = ref(null)
+let observer = null
+
+function setupVisibilityRefetch(element) {
+  if (!element || !window.IntersectionObserver) return
+  observer?.disconnect()
+  observer = new IntersectionObserver(
+    ([entry]) => { if (entry.isIntersecting) refetch() },
+    { threshold: 0.01 }
+  )
+  observer.observe(element)
+}
+
+onMounted(() => setupVisibilityRefetch(el.value))
+onBeforeUnmount(() => observer?.disconnect())
 
 function toggleOrder() {
   orderDir.value = orderDir.value === 'desc' ? 'asc' : 'desc'
