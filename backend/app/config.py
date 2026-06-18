@@ -14,7 +14,10 @@ AUDIO_CACHE_DIR.mkdir(exist_ok=True)
 DATABASE_URL = f"sqlite+aiosqlite:///{BASE_DIR / 'history.db'}"
 
 # CORS 支持多域名列表
-_cors_raw = os.getenv("CORS_ORIGINS", "http://localhost:5173")
+# 默认允许本地前端开发服务器；HF Spaces 上前后端同域，不需要跨域
+# 但若用户有自定义域名，可通过 CORS_ORIGINS 环境变量追加（逗号分隔）
+_cors_default = "http://localhost:5173,http://localhost:3000"
+_cors_raw = os.getenv("CORS_ORIGINS", _cors_default)
 CORS_ORIGINS: list[str] = [o.strip() for o in _cors_raw.split(",") if o.strip()]
 
 # RAGFlow（允许为空，未配置时 Chat Tab 显示引导）
