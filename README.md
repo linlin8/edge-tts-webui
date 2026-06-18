@@ -17,7 +17,7 @@ short_description: Web UI for edge-tts — TTS synthesis, streaming, AI chat
 
 ### 🎙️ TTS 合成
 
-![TTS 合成页面](docs/images/screenshot-tts.png)
+![TTS 合成页面](https://github.com/user-attachments/assets/677a2653-a589-4999-83d3-5c33cb735a3f)
 
 选择语音 → 输入文字 → 一键合成 MP3。
 
@@ -32,7 +32,7 @@ short_description: Web UI for edge-tts — TTS synthesis, streaming, AI chat
 
 ### 📜 历史记录
 
-![历史记录页面](docs/images/screenshot-history.png)
+![历史记录页面](https://github.com/user-attachments/assets/edcb5d45-dfd1-4034-9ff2-aa468b79b074)
 
 每次合成自动保存，方便随时回听和管理。
 
@@ -43,7 +43,7 @@ short_description: Web UI for edge-tts — TTS synthesis, streaming, AI chat
 
 ### 🤖 AI 对话（需配置 RAGFlow）
 
-![AI 对话页面](docs/images/screenshot-chat.png)
+![AI 对话页面](https://github.com/user-attachments/assets/d6b5511e-f7a9-492e-8c53-9bc6e0b8a5f0)
 
 接入 RAGFlow 知识库，实现基于私有文档的 AI 问答，并可将回复实时朗读。
 
