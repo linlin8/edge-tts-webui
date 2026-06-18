@@ -1,5 +1,5 @@
 <template>
-  <div ref="el" class="flex flex-col h-full">
+  <div class="flex flex-col h-full">
     <!-- 工具栏 -->
     <div class="flex items-center gap-2 mb-3 flex-shrink-0 flex-wrap">
       <!-- 搜索 -->
@@ -172,11 +172,15 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useHistory } from '../composables/useHistory.js'
 import AudioPlayer from './AudioPlayer.vue'
 import ConfirmDialog from './ConfirmDialog.vue'
+
+const props = defineProps({
+  activeTab: { type: String, default: '' },
+})
 
 const toast = useToast()
 
@@ -203,22 +207,10 @@ const allSelected = computed(() =>
 
 watch(page, () => { selected.value.clear() })
 
-// 切换到当前 Tab 时自动刷新
-const el = ref(null)
-let observer = null
-
-function setupVisibilityRefetch(element) {
-  if (!element || !window.IntersectionObserver) return
-  observer?.disconnect()
-  observer = new IntersectionObserver(
-    ([entry]) => { if (entry.isIntersecting) refetch() },
-    { threshold: 0.01 }
-  )
-  observer.observe(element)
-}
-
-onMounted(() => setupVisibilityRefetch(el.value))
-onBeforeUnmount(() => observer?.disconnect())
+// 切换到历史 Tab 时自动刷新
+watch(() => props.activeTab, (tab) => {
+  if (tab === 'history') refetch()
+})
 
 function toggleOrder() {
   orderDir.value = orderDir.value === 'desc' ? 'asc' : 'desc'

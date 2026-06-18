@@ -80,7 +80,7 @@
 
         <!-- 历史 Tab -->
         <div v-show="activeTab === 'history'" class="h-full card p-4 overflow-hidden flex flex-col">
-          <HistoryList class="flex-1 overflow-hidden" />
+          <HistoryList :active-tab="activeTab" class="flex-1 overflow-hidden" />
         </div>
 
         <!-- 对话 Tab -->
