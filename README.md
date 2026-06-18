@@ -1,3 +1,12 @@
+---
+title: Edge-TTS WebUI
+emoji: 🎙️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+short_description: Web UI for edge-tts — TTS synthesis, streaming, AI chat
+---
 # edge-tts-webui
 
 基于 [edge-tts](https://github.com/rany2/edge-tts) 构建的 Web 界面与 REST API，支持文字转语音合成、流式播放、历史记录管理，并可选集成 [RAGFlow](https://github.com/infiniflow/ragflow) 实现 AI 对话转语音。
